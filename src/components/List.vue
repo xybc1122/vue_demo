@@ -4,8 +4,9 @@
 <template>
   <div class="col-md-8">
     <h3 class="reply">评论回复：</h3>
-    <h2 style='display: none'>暂无评论，点击左侧添加评论！！！</h2>
-    <item v-for="(comment,index) in comments" :key="index" :comment="comment"/>
+    <h2 v-show="comments.length===0">暂无评论，点击左侧添加评论！！！</h2>
+    <item v-for="(comment,index) in comments" :key="index" :comment="comment"
+          :deleteComment="deleteComment" :index="index"/>
   </div>
 </template>
 <!--JS-->
@@ -13,7 +14,7 @@
   import item from './item'
   export default {
     //props声明接收属性 只指定属性名
-    props:['comments'],
+    props:['comments','deleteComment'],
     components:{
       item
     }

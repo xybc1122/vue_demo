@@ -12,7 +12,7 @@
     <div class="container">
       <Add :addComment="addComment"/>
       <!--:comments="comments"传递组件-->
-      <List :comments="comments"/>
+      <List :comments="comments" :deleteComment="deleteComment"/>
     </div>
   </div>
 </template>
@@ -35,10 +35,13 @@
     components: {
       Add, List //映射成标签
     },
-    methods:{
+    methods: {
       //添加评论
-      addComment(comment){
-      this.comments.unshift(comment)
+      addComment (comment) {
+        this.comments.unshift(comment)
+      },
+      deleteComment (index) {
+        this.comments.splice(index, 1)
       }
     }
   }
