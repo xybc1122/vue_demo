@@ -6,7 +6,6 @@ import Vue from 'vue'
 // 引入App vue
 import App from './App'
 
-
 new Vue({
   el: '#app',
   components: {

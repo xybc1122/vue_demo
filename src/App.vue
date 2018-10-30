@@ -1,49 +1,36 @@
 <template>
   <div>
-    <header class="site-header jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1>请发表对Vue的评论</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="container">
-      <Add :addComment="addComment"/>
-      <!--:comments="comments"传递组件-->
-      <List :comments="comments" :deleteComment="deleteComment"/>
-    </div>
+    <div v-if="!repoUrl">loading....</div>
+    <div v-else>请求数据</div>
   </div>
 </template>
 
 <script>
-  // 引入组件
-  import Add from './components/Add'
-  import List from './components/List'
+  import axios from 'axios'
 
   export default {
-    data () {
+    data() {
       return {
-        comments: [
-          {name: '恩惠', content: 'vue 还不错1'},
-          {name: '婷婷', content: 'vue 还不错2'},
-          {name: '嘻嘻', content: 'vue 还不错3'}
-        ]
+        repoUrl: '',
+        repoName: ''
       }
     },
-    components: {
-      Add, List //映射成标签
-    },
-    methods: {
-      //添加评论
-      addComment (comment) {
-        this.comments.unshift(comment)
-      },
-      deleteComment (index) {
-        this.comments.splice(index, 1)
-      }
+    mounted() {
+      //发ajax请求数据
+      const url = 'http://127.0.0.1:9001/ajaxLogin?userName=tt&pwd=8';
+      const ur2 = 'http://127.0.0.1:9001/admin/add';
+      //使用axios
+      axios.post(url).then(
+        response => {
+          //success
+          const result = response.data;
+          console.log(result);
+        }
+      ).catch(error => {
+
+      })
     }
+
   }
 </script>
 

@@ -25,7 +25,7 @@
     },
     methods:{
       delimiters(){
-        const {comment,index,deleteComment}= this
+        const {comment,index,deleteComment}= this;
         //删除判断弹窗
         if(window.confirm(`确定删除${comment.name}的评论吗?`)){
               deleteComment(index)
