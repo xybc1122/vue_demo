@@ -5,14 +5,18 @@
 import Vue from 'vue'
 // 引入App vue
 import App from './App'
+import {
+  Button,
+  Input
+}from 'mint-ui'
 
-import router from './router'
+Vue.use(Button);
+Vue.use(Input);
 
 new Vue({
   el: '#app',
   components: {
     App
   },
-  template: '<App/>',
-  router
+  template: '<App/>'
 });
